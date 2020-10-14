@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
   def user_params #ストロングパラメーターを使用し、user_paramsを定義
