@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @room = Room.find(params[:room_id])
+    @messages = @room.messages.includes(:user)  #N+1問題解消のためにincludes(:user)でユーザー情報を一度に取得する。
   end
   #   @roomには、Room.find(params[:room_id])と記述することで、paramsに含まれているroom_idを代入します。
   # 紐解いて説明すると、直前の問題にあった通りルーティングをネストしているため/rooms/:room_id/messagesといったパスになります。
@@ -14,6 +15,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to room_messages_path(@room) #@roomがパスを持っているのでこの記述になる
     else
+      @messages = @room.messages.includes(:user)  #roomに紐づいたメッセージとユーザー情報がないとindexは何を表示指定いかわからなくなるため必要らしい。
       render :index
     end
   end

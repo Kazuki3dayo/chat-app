@@ -11,37 +11,7 @@
   </div>
 </div>
 <div class="messages">
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/10/14(Wed) 14:38:17
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-contet">
-        おはよう
-      </div>
-    </div>
-  </div>
-
-  <div class="message">
-    <div class="upper-message">
-      <div class="message-user">
-        Tom
-      </div>
-      <div class="message-date">
-        2020/10/14(Wed) 17:38:17
-      </div>
-    </div>
-    <div class="lower-message">
-      <div class="message-contet">
-        こんばんは
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'message', collection: @messages %>   <%#_message.html.erbを部分テンプレートとして、読み込み、collectionで@messageの複数の内容を繰り返しrenderで表示する。%>
 </div>
 
   <%# #form_withの引数に@room, @messageの2つを渡している点に注意 %>
