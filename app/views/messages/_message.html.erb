@@ -14,5 +14,6 @@
       <!-- 投稿したメッセージ内容を記述する -->
       <%= message.content %>  <!--messagesテーブルのcontentカラムから、メッセージの内容を取得しています。-->
     </div>
+    <%= image_tag message.image.variant(resize: '500x500'), class: 'message-image' if message.image.attached? %>   <!--if message.image.attached?と記述することで、画像が存在する場合のみimage_tagが読み込まれるようになります。-->
   </div>
 </div>
